@@ -16,6 +16,8 @@ import { UpdatePasswordUserComponent } from './component/user/update-password-us
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
+import { ContentComponent } from './component/header/content/content.component';
+import { SearchComponent } from './component/header/search/search.component';
 
 
 
@@ -30,6 +32,8 @@ import {RouterModule} from '@angular/router';
     LoginComponent,
     HomeUserComponent,
     UpdatePasswordUserComponent,
+    ContentComponent,
+    SearchComponent,
 
   ],
   imports: [
