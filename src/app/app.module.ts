@@ -13,9 +13,10 @@ import { RegisterComponent } from './component/user/register/register.component'
 import { LoginComponent } from './component/user/login/login.component';
 import { HomeUserComponent } from './component/user/home-user/home-user.component';
 import { UpdatePasswordUserComponent } from './component/user/update-password-user/update-password-user.component';
-import {ReactiveFormsModule} from '@angular/forms';
-import { ContentComponent } from './component/header/content/content.component';
-import { SearchComponent } from './component/header/search/search.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import {RouterModule} from '@angular/router';
+
 
 
 @NgModule({
@@ -29,14 +30,15 @@ import { SearchComponent } from './component/header/search/search.component';
     LoginComponent,
     HomeUserComponent,
     UpdatePasswordUserComponent,
-    ContentComponent,
-    SearchComponent,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    RouterModule,
+    FormsModule,
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
