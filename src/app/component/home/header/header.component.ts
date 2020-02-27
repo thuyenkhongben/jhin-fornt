@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import {CookieService} from 'ngx-cookie-service';
 import {UserService} from '../../../service/user.service';
+import {CookieService} from 'ngx-cookie-service';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-content',
-  templateUrl: './content.component.html',
-  styleUrls: ['./content.component.scss']
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss']
 })
-export class ContentComponent implements OnInit {
+export class HeaderComponent implements OnInit {
 
-  constructor(private cookieService: CookieService , private userService: UserService , private router: Router) { }
+  constructor(private userService: UserService , private cookieService: CookieService , private router: Router) { }
 
   ngOnInit() {
     this.router.navigate(['listProduct']);
@@ -18,6 +18,7 @@ export class ContentComponent implements OnInit {
     this.userService.userOnline.accessToken = this.cookieService.get('jwtToken');
     this.userService.userOnline.password = window.sessionStorage.getItem('password');
   }
+
   logout() {
     this.cookieService.delete('username');
     this.cookieService.delete('jwtToken');
@@ -28,4 +29,5 @@ export class ContentComponent implements OnInit {
     this.userService.userOnline.password = '';
     window.location.reload();
   }
+
 }
