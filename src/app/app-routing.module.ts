@@ -12,7 +12,7 @@ const routes: Routes = [
     component: AppComponent,
   },
   {
-    path: 'api/auth/login',
+    path: 'login',
     component: LoginComponent
   },
   {
@@ -20,11 +20,11 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: 'api/auth/register',
+    path: 'register',
     component: RegisterComponent
   },
   {
-    path: 'auth/login/registered',
+    path: 'registered',
     component: RegisterComponent
   },
 

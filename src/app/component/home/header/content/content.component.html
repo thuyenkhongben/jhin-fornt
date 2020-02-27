@@ -12,11 +12,9 @@
           <a class="nav-item nav-link" href="#">Giới thiệu</a>
           <a class="nav-item nav-link" href="#">Sản phẩm</a>
           <a class="nav-item nav-link" href="#">Tin tức</a>
-<!--          <a class="text-success"  [routerLink]= "['api/auth/login']" rrouterLinkActive="active" >Đăng nhập</a>-->
-<!--          <a class="text-success" [routerLink]= "['api/auth/register']" routerLinkActive="active" >Đăng ký</a>-->
-          <div *ngIf="userService.userOnline.username==''" class="nav-item nav-link">
-            <a class="text-success"  [routerLink]= "['/api/auth/login']" routerLinkActive="active" >Đăng nhập</a> |
-            <a class="text-success" [routerLink]= "['api/auth/register']" routerLinkActive="active" >Đăng ký</a>
+          <div *ngIf="userService.userOnline.username ==''" class="nav-item nav-link">
+            <a class="text-success"  [routerLink]= "['login']" routerLinkActive="active" >Đăng nhập</a> |
+            <a class="text-success" [routerLink]= "['register']" routerLinkActive="active" >Đăng ký</a>
           </div>
           <div *ngIf="userService.userOnline.username!=''" class="nav-item nav-link">
             <a class="text-success" routerLink="homeUser" routerLinkActive="active">{{userService.userOnline.username}}</a> |
