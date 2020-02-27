@@ -14,7 +14,7 @@ import {Login} from '../interface/login';
 export class UserService {
   userOnline: UserOnline = {username: '', accessToken: ''};
 
-  private API_URL = 'https://locahost:5000/api/auth';
+  private API_URL = 'http://localhost:5000/api/auth';
 
   check = '';
   constructor(private http: HttpClient , private  cookieService: CookieService , private router: Router) { }

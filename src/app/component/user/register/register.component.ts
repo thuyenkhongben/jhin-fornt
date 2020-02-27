@@ -16,12 +16,18 @@ export class RegisterComponent implements OnInit {
   login: Login;
   registerForm: FormGroup;
   check = '';
+  checklaimk = '';
   constructor(private registerFormBuilder: FormBuilder, private userService: UserService , private cookieService: CookieService) { }
 
   checkPassword( group: FormGroup) {
     const password1 = group.get('password');
     const password2 = group.get('confirmPassword');
-    return password1 === password2 ? null : { notSame: true};
+    // return password1 === password2 ? null : { notSame: true};
+    if (password1 === password2) {
+      return this.checklaimk = 'true';
+    } else {
+      return this.checklaimk = ' false';
+    }
   }
   ngOnInit() {
     this.registerForm = this.registerFormBuilder.group({
