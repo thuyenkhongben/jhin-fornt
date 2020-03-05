@@ -1,3 +1,4 @@
+
 .justify-content-md-center {
   margin-top: 30px;
 }
@@ -94,7 +95,9 @@
   width: 100%;
   display: block;
   float: left;
-  margin-top: 30px;
+  //margin-top: 30px;
+  color: #4aff8c;
+  background-color: #f3f3f3 ;
 }
 .form-control{
   height: 50px!important;
@@ -110,7 +113,7 @@
   height: 50px;
   line-height: 50px;
   color: #fff;
-  background: #91ad41 !important;
+  background: #4aff8c !important;
   border:1px solid #fff;
   font-family: "Quicksand",sans-serif;
 }
