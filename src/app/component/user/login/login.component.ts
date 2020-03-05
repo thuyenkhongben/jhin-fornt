@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
 
+  // tslint:disable-next-line:max-line-length
   constructor(private loginBuilder: FormBuilder , private userService: UserService , private cookieService: CookieService , private router: Router) { }
 
   ngOnInit() {
