@@ -24,7 +24,7 @@ export class UserService {
   }
 
   userLogin(userLogin: Login): Observable<UserOnline> {
-    return this.http.post(`${this.API_URL}/signin`, userLogin);
+    return this.http.post<UserOnline>(`${this.API_URL}/signin`, userLogin);
   }
 
   userDetails(): Observable<User> {
@@ -67,5 +67,9 @@ export class UserService {
       this.check = ' false';
       }
       );
+  }
+
+  userLogout(){
+
   }
 }

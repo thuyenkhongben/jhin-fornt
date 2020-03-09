@@ -15,6 +15,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 import { HomeComponent } from './component/home/home.component';
+import { ListProductComponent } from './component/product/list-product/list-product.component';
+import { CreateProductComponent } from './component/product/create-product/create-product.component';
+import { UpdateProductComponent } from './component/product/update-product/update-product.component';
+import { EditProductComponent } from './component/product/edit-product/edit-product.component';
+import { DeleteProductComponent } from './component/product/delete-product/delete-product.component';
 
 
 
@@ -28,6 +33,11 @@ import { HomeComponent } from './component/home/home.component';
     HomeUserComponent,
     UpdatePasswordUserComponent,
     HomeComponent,
+    ListProductComponent,
+    CreateProductComponent,
+    UpdateProductComponent,
+    EditProductComponent,
+    DeleteProductComponent,
 
   ],
   imports: [

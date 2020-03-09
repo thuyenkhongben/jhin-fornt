@@ -3,6 +3,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../../service/user.service';
 import {CookieService} from 'ngx-cookie-service';
 import {Router} from '@angular/router';
+import {AuthService} from '../../../auth/auth.service';
+import {HttpHeaders} from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -12,9 +14,12 @@ import {Router} from '@angular/router';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
+  check = 'false';
 
   // tslint:disable-next-line:max-line-length
-  constructor(private loginBuilder: FormBuilder , private userService: UserService , private cookieService: CookieService , private router: Router) { }
+  constructor(private loginBuilder: FormBuilder , private authService: AuthService ,
+              private cookieService: CookieService , private router: Router ,
+              private userService: UserService) { }
 
   ngOnInit() {
     this.formLogin();
@@ -28,13 +33,38 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.loginForm.valid) {
-      this.userService.autoLogin(this.loginForm.value);
-      window.sessionStorage.setItem('password', this.loginForm.get('password').value);
-    }
+    this.logninUser();
   }
-  onSelect() {
-    this.router.navigate(['register'])
+  logninUser() {
+    console.log('Loginin');
+    console.log(JSON.stringify(this.loginForm.value));
+    this.authService.signin(this.loginForm.value).subscribe( next => {
+      localStorage.setItem('token' , next.accessToken);
+      localStorage.setItem('username' , next.username);
+      this.authService.token = next.token;
+      this.authService.header = new HttpHeaders(
+        {
+          Authorization: `Bearer ${this.authService.token}`,
+          'Content-Type': 'application/json'
+        }
+      );
+      if (next.accessToken) {
+        this.router.navigateByUrl('/api/start');
+        this.check = 'true';
+      }
+      console.log(next.accessToken);
+    });
   }
+  get username() {
+    return this.loginForm.get('username');
+  }
+
+  get password() {
+    return this.loginForm.get('password');
+  }
+  lognout() {
+    this.userService.userLogout();
+  }
+
 
 }
