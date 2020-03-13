@@ -1,7 +1,13 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {Router} from '@angular/router';
+import {UserOnline} from '../interface/user-online';
+import {Role} from '../interface/role';
+import {LoginInfo} from './login-info';
 import {FormGroup} from '@angular/forms';
+import {JwtResponse} from './jwtResponse';
+import {SignUpInfor} from './SignUpInfor';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type' : 'application/json'})
@@ -11,31 +17,16 @@ const httpOptions = {
 })
 export class AuthService {
 
-  private readonly API_URL = 'http://localhost:5000/api/auth/signin';
-  private readonly RESET_PASSWORD_API_URL =  'http://localhost:5000/api/auth/reset-password';
-  token: string;
-  username: string;
-  header: HttpHeaders;
+  private  API_URL_LOGIN = 'http://localhost:5000/api/auth/signin';
+  private  API_URL = 'http://localhost:5000/api/auth/signup';
 
-  authenticate(user): Observable<any> {
-    return this.http.post<any>(this.API_URL, user);
+  constructor(private http: HttpClient ) {
   }
-
-  constructor(private http: HttpClient) {
-    this.token = localStorage.getItem('token');
-    this.username = localStorage.getItem('username');
-    console.log(this.username);
-    this.header = new HttpHeaders({
-      'Content-Type': 'application/json' ,
-      Authorization: `Bearer ${this.token}`
-    });
+  attemptAuth(credentials: LoginInfo): Observable< JwtResponse > {
+    return this.http.post< JwtResponse >(this.API_URL_LOGIN , credentials , httpOptions);
   }
-
-  signin(signinForm: FormGroup): Observable<any> {
-    return this.http.post(this.API_URL , JSON.stringify(signinForm) , httpOptions);
-  }
-  userLogout() {
-    window.localStorage.clear();
-    window.location.replace('api/auth/signin');
+  signUp(info: SignUpInfor): Observable<string> {
+    return this.http.post<string>(this.API_URL , info , httpOptions);
   }
 }
+

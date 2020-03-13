@@ -2,40 +2,51 @@ import { Injectable } from '@angular/core';
 
 const TOKEN_KEY = 'AuthToken';
 const USERNAME_KEY = 'AuthUsername';
-const AUTHORITY_KEY = 'AuthAuthority';
+const AUTHORITIES_KEY = 'AuthAuthorities';
+const ID_KEY  = 'AuthUserId';
+
 @Injectable({
   providedIn: 'root'
 })
 export class TokenStogeService {
-  private  role: string;
+  private  roles: Array<string> = [] ;
 
   constructor() { }
   signOut() {
-    window.localStorage.clear();
+    window.sessionStorage.clear();
   }
   public saveToken(token: string) {
-    window.localStorage.removeItem(TOKEN_KEY);
-    window.localStorage.setItem(TOKEN_KEY, token);
+    window.sessionStorage.removeItem(TOKEN_KEY);
+    window.sessionStorage.setItem(TOKEN_KEY, token);
   }
   public getToken(): string {
-    return localStorage.getItem(TOKEN_KEY);
+    return sessionStorage.getItem(TOKEN_KEY);
   }
   public saveUsername(username: string) {
-    window.localStorage.removeItem(USERNAME_KEY);
-    window.localStorage.setItem(USERNAME_KEY , username);
+    window.sessionStorage.removeItem(USERNAME_KEY);
+    window.sessionStorage.setItem(USERNAME_KEY , username);
   }
   public getUsername(): string {
     return localStorage.getItem(USERNAME_KEY);
   }
-  public saveAuthority(authority: string) {
-    window.localStorage.removeItem(AUTHORITY_KEY);
-    window.localStorage.setItem(AUTHORITY_KEY, JSON.stringify(authority));
+  public saveAuthorities(authorities: string[]) {
+    window.sessionStorage.removeItem(AUTHORITIES_KEY);
+    window.sessionStorage.setItem(AUTHORITIES_KEY, JSON.stringify(authorities));
   }
-  public getAuthority(): string {
-    this.role = '';
-    if (localStorage.getItem(TOKEN_KEY)) {
-      JSON.parse(localStorage.getItem(AUTHORITY_KEY));
+  public getAuthorities(): string  [] {
+    this.roles = [];
+    if (sessionStorage.getItem(TOKEN_KEY)) {
+      JSON.parse(sessionStorage.getItem(AUTHORITIES_KEY)).forEach ( authority => {
+        this.roles.push(authority.authority);
+      });
     }
-    return this.role;
+    return this.roles;
+  }
+  public saveId(id: string) {
+    window.sessionStorage.removeItem(ID_KEY);
+    window.sessionStorage.setItem(ID_KEY , id);
+  }
+  public getId(): string {
+    return sessionStorage.getItem(ID_KEY);
   }
 }

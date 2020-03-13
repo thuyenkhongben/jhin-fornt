@@ -20,6 +20,11 @@ import { CreateProductComponent } from './component/product/create-product/creat
 import { UpdateProductComponent } from './component/product/update-product/update-product.component';
 import { EditProductComponent } from './component/product/edit-product/edit-product.component';
 import { DeleteProductComponent } from './component/product/delete-product/delete-product.component';
+import { ListCategoryComponent } from './component/category/list-category/list-category.component';
+import { CreateCategoryComponent } from './component/category/create-category/create-category.component';
+import { UpdateCategoryComponent } from './component/category/update-category/update-category.component';
+import { DeleteCategoryComponent } from './component/category/delete-category/delete-category.component';
+import { StartComponent } from './start/start.component';
 
 
 
@@ -38,6 +43,11 @@ import { DeleteProductComponent } from './component/product/delete-product/delet
     UpdateProductComponent,
     EditProductComponent,
     DeleteProductComponent,
+    ListCategoryComponent,
+    CreateCategoryComponent,
+    UpdateCategoryComponent,
+    DeleteCategoryComponent,
+    StartComponent,
 
   ],
   imports: [

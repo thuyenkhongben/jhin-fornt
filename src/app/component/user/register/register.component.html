@@ -41,8 +41,9 @@
             Nhập lại mật khẩu
             <input type="password" class="form-control" formControlName="confirmPassword" placeholder="ConfirmPassword">
           </div>
+
           <div class="alert alert-danger" role="alert"
-               *ngIf="registerForm.hasError('checklaimk')&&registerForm.get('confirmPassword').touched">
+               *ngIf="registerForm.hasError('notSame')&&registerForm.get('confirmPassword').touched">
 
             Password không giống
           </div>
@@ -54,8 +55,6 @@
             điền thông tin chưa đúng hoặc email đã tồn tại
           </div>
           <div class="form-group">
-            <div>
-            </div>
             <button class="btn btn-primary" type="submit">Đăng ký</button>
           </div>
         </form>

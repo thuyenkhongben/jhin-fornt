@@ -41,35 +41,4 @@ export class UserService {
 
     return this.http.put<User>(`${this.API_URL}/update/password/user`, user, {headers});
   }
-
-  autoLogin(login: Login) {
-    this.userLogin(login).subscribe(next => {
-      for (const role of next.authorities) {
-        if (role.authority === 'ROLE_ADMIN') {
-          this.cookieService.set('username', 'Admin');
-          this.cookieService.set('jwtToken', next.accessToken);
-          window.sessionStorage.setItem('role', role.authority);
-          this.router.navigate(['listProduct']);
-
-          break;
-        } else if (role.authority === 'ROLE_USER') {
-          this.cookieService.set('username', next.username);
-          this.cookieService.set('jwtToken', next.accessToken);
-          this.cookieService.set('role', role.authority);
-          this.router.navigate(['listProduct']);
-        }
-      }
-      this.check = 'true';
-    },
-      error => {
-      this.cookieService.delete('jwtToken');
-      this.cookieService.delete('username');
-      this.check = ' false';
-      }
-      );
-  }
-
-  userLogout(){
-
-  }
 }

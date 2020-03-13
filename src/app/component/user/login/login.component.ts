@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../../service/user.service';
 import {CookieService} from 'ngx-cookie-service';
 import {Router} from '@angular/router';
 import {AuthService} from '../../../auth/auth.service';
 import {HttpHeaders} from '@angular/common/http';
+import {error, log} from 'util';
+import {LoginInfo} from '../../../auth/login-info';
+import {TokenStogeService} from '../../../auth/token-stoge.service';
 
 @Component({
   selector: 'app-login',
@@ -12,59 +15,66 @@ import {HttpHeaders} from '@angular/common/http';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  form: any = {};
+  isLoggedIn = false;
+  isLoginFailed = false;
+  errorMessage = '';
+  roles: string[] = [];
+  private loginInfo: LoginInfo;
+  isSuccess = false;
+  loginForm = new FormGroup({
+    username: new FormControl('', Validators.required),
+    password: new FormControl('', [
+      Validators.required, Validators.minLength(6)
+    ]),
+  });
 
-  loginForm: FormGroup;
-  check = 'false';
-
-  // tslint:disable-next-line:max-line-length
-  constructor(private loginBuilder: FormBuilder , private authService: AuthService ,
-              private cookieService: CookieService , private router: Router ,
-              private userService: UserService) { }
-
+  constructor(private authService: AuthService , private tokenStorage: TokenStogeService,
+              private router: Router , private fb: FormBuilder) {
+  }
   ngOnInit() {
     this.formLogin();
   }
-
   formLogin() {
-    this.loginForm = this.loginBuilder.group( {
-      username: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(16)]],
-      password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(16)]],
-    });
+    console.log(this.loginForm.value);
+    if (this.tokenStorage.getToken()) {
+      console.log('token_:' + this.tokenStorage.getToken());
+      this.isLoggedIn = true;
+      this.roles = this.tokenStorage.getAuthorities();
+    }
   }
-
   onSubmit() {
-    this.logninUser();
-  }
-  logninUser() {
-    console.log('Loginin');
-    console.log(JSON.stringify(this.loginForm.value));
-    this.authService.signin(this.loginForm.value).subscribe( next => {
-      localStorage.setItem('token' , next.accessToken);
-      localStorage.setItem('username' , next.username);
-      this.authService.token = next.token;
-      this.authService.header = new HttpHeaders(
-        {
-          Authorization: `Bearer ${this.authService.token}`,
-          'Content-Type': 'application/json'
-        }
-      );
-      if (next.accessToken) {
-        this.router.navigateByUrl('/api/start');
-        this.check = 'true';
+    const {username, password} = this.loginForm.value;
+    const loginInfo = new LoginInfo(username, password);
+    console.log(loginInfo);
+
+    // this.loginInfo = new LoginInfo(
+    //   this.form.username,
+    //   this.form.password);
+// store to web browser;
+    this.authService.attemptAuth(loginInfo).subscribe(
+      responseJWT => {
+        console.log('get UserName from BE:' + responseJWT.data.username);
+        console.log('get token from BE:' + responseJWT.data.accessToken);
+        this.tokenStorage.saveId(responseJWT.data.id);
+        this.tokenStorage.saveToken(responseJWT.data.accessToken);
+        this.tokenStorage.saveUsername(responseJWT.data.username);
+        this.tokenStorage.saveAuthorities(responseJWT.data.roles);
+        this.isLoginFailed = false;
+        this.isLoggedIn = true;
+        this.roles = this.tokenStorage.getAuthorities();
+        console.log('>>>>' + this.tokenStorage);
+        // this.reloadPage();
+        this.router.navigateByUrl('/');
+      },
+      // tslint:disable-next-line:no-shadowed-variable
+      error => {
+        console.log(error);
+        this.errorMessage = error.error.message;
+        this.isLoginFailed = true;
+        this.isSuccess = true;
       }
-      console.log(next.accessToken);
-    });
+    );
   }
-  get username() {
-    return this.loginForm.get('username');
-  }
-
-  get password() {
-    return this.loginForm.get('password');
-  }
-  lognout() {
-    this.userService.userLogout();
-  }
-
 
 }

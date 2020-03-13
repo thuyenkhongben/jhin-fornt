@@ -5,6 +5,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../../service/user.service';
 import {Router} from '@angular/router';
 import {CookieService} from 'ngx-cookie-service';
+import {AuthService} from '../../../auth/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -17,17 +18,12 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   check = '';
   checklaimk = '';
-  constructor(private registerFormBuilder: FormBuilder, private userService: UserService , private cookieService: CookieService) { }
+  constructor(private registerFormBuilder: FormBuilder, private userService: UserService, private authService: AuthService) { }
 
   checkPassword( group: FormGroup) {
     const password1 = group.get('password');
     const password2 = group.get('confirmPassword');
-    // return password1 === password2 ? null : { notSame: true};
-    if (password1 === password2) {
-      return this.checklaimk = 'true';
-    } else {
-      return this.checklaimk = ' false';
-    }
+    return password1 === password2 ? null : { notSame: true};
   }
   ngOnInit() {
     this.registerForm = this.registerFormBuilder.group({
@@ -40,19 +36,19 @@ export class RegisterComponent implements OnInit {
     );
   }
 
-  onSubmit() {
-    this.formUrl();
-    this.userService.createUser(this.user).subscribe( next => {
-      this.login = { username: this.registerForm.get('username').value , password: this.registerForm.get('password').value};
-      this.userService.autoLogin(this.login);
-      window.sessionStorage.setItem('password' , this.registerForm.get('password').value);
-      this.check = 'true';
-    },
-      error => {
-      this.check = 'false';
-      }
-      );
-  }
+  // onSubmit() {
+  //   this.formUrl();
+  //   this.userService.createUser(this.user).subscribe( next => {
+  //     this.login = { username: this.registerForm.get('username').value , password: this.registerForm.get('password').value};
+  //     this.authService.userSignin(this.login)
+  //     window.sessionStorage.setItem('password' , this.registerForm.get('password').value);
+  //     this.check = 'true';
+  //   },
+  //     error => {
+  //     this.check = 'false';
+  //     }
+  //     );
+  // }
 
   formUrl() {
     this.user = {
@@ -62,6 +58,23 @@ export class RegisterComponent implements OnInit {
       password: this.registerForm.get('password').value,
       role: ['admin']
     };
+  }
+
+  get email() {
+    return this.registerForm.get('email');
+  }
+
+  get username() {
+    return this.registerForm.get('username');
+  }
+  get password() {
+    return this.registerForm.get('password');
+  }
+  get name() {
+    return this.registerForm.get('name');
+  }
+  get confirmPassword() {
+    return this.registerForm.get('confirmPassword');
   }
 
 }
