@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
         this.roles = this.tokenStorage.getAuthorities();
         console.log('>>>>' + this.tokenStorage);
         // this.reloadPage();
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('api/start');
       },
       // tslint:disable-next-line:no-shadowed-variable
       error => {
