@@ -1,14 +1,14 @@
 <div class="bg_base_lr">
   <div class="container">
     <div class="row">
-      <div class="col-sm-3" style="max-width:350px;"></div>
+      <div class="col-sm-3" style="amax-width:350px;"></div>
       <div class="col-sm-6" style="">
-        <form name="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <form name="form" [formGroup]="form" (ngSubmit)="onSubmit()">
           <div class="form-group">
             Họ và Tên
             <input type="text" class="form-control" formControlName="name" placeholder="Họ và tên"/>
             <div class="alert alert-danger" role="alert"
-                 *ngIf="registerForm.get('name').invalid && registerForm.get('name').touched">
+                 *ngIf="form.get('name').invalid && form.get('name').touched">
               Mật khẩu nhất 6 ký tự và nhiều nhất 20 ký tự
             </div>
           </div>
@@ -16,7 +16,7 @@
             Tên Đăng Nhập
             <input type="text" class="form-control" formControlName="username" placeholder="Tên Đăng Nhập"/>
             <div class="alert alert-danger" role="alert"
-                 *ngIf="registerForm.get('username').invalid && registerForm.get('username').touched">
+                 *ngIf="form.get('username').invalid && form.get('username').touched">
               Mật khẩu nhất 6 ký tự và nhiều nhất 20 ký tự
             </div>
           </div>
@@ -24,7 +24,7 @@
             Email
             <input type="text" class="form-control" formControlName="email" placeholder="Email"/>
             <div class="alert alert-danger" role="alert"
-                 *ngIf="registerForm.get('email').invalid && registerForm.get('email').touched">
+                 *ngIf="form.get('email').invalid && form.get('email').touched">
               Sai định dạng Email
             </div>
           </div>
@@ -32,7 +32,7 @@
             Mật khẩu
             <input type="password" class="form-control" formControlName="password" placeholder="Password"/>
             <div class="alert alert-danger" role="alert"
-                 *ngIf="registerForm.get('password').invalid && registerForm.get('password').touched">
+                 *ngIf="form.get('password').invalid && form.get('password').touched">
               Mật khẩu gồm 6 ký tự
             </div>
           </div>
@@ -43,15 +43,15 @@
           </div>
 
           <div class="alert alert-danger" role="alert"
-               *ngIf="registerForm.hasError('notSame')&&registerForm.get('confirmPassword').touched">
+               *ngIf="form.hasError('notSame')&&form.get('confirmPassword').touched">
 
             Password không giống
           </div>
 
-          <div class="alert alert-success" role="alert" *ngIf="check==='true'">
+          <div class="alert alert-success" role="alert" *ngIf="successSignUp==='true'">
             Đăng ký thành công
           </div>
-          <div class="alert alert-danger" role="alert" *ngIf="check==='false'">
+          <div class="alert alert-danger" role="alert" *ngIf="successSignUp==='false'">
             điền thông tin chưa đúng hoặc email đã tồn tại
           </div>
           <div class="form-group">
