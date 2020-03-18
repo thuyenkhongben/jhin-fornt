@@ -47,10 +47,6 @@ export class LoginComponent implements OnInit {
     const {username, password} = this.loginForm.value;
     const loginInfo = new LoginInfo(username, password);
     console.log(loginInfo);
-
-    // this.loginInfo = new LoginInfo(
-    //   this.form.username,
-    //   this.form.password);
 // store to web browser;
     this.authService.attemptAuth(loginInfo).subscribe(
       responseJWT => {
@@ -64,8 +60,15 @@ export class LoginComponent implements OnInit {
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getAuthorities();
         console.log('>>>>' + this.tokenStorage);
+        // console.log(this.roles);
+        for (const count of this.roles) {
+          if (count === 'ADMIN') {
+            this.router.navigate(['api/start']);
+          } else  if (count === 'USER') {
+            this.router.navigate(['api/listProduct']);
+          }
+        }
         // this.reloadPage();
-        this.router.navigateByUrl('api/start');
       },
       // tslint:disable-next-line:no-shadowed-variable
       error => {

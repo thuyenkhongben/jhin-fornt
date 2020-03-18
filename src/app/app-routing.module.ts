@@ -6,6 +6,8 @@ import {RegisterComponent} from './component/user/register/register.component';
 import {ListProductComponent} from './component/product/list-product/list-product.component';
 import {HomeComponent} from './component/home/home.component';
 import {StartComponent} from './start/start.component';
+import {ListCategoryComponent} from './component/category/list-category/list-category.component';
+import {CreateCategoryComponent} from './component/category/create-category/create-category.component';
 
 
 const routes: Routes = [
@@ -25,10 +27,16 @@ const routes: Routes = [
         path: 'api/listProduct',
         component: ListProductComponent
       },
-  {
-    path: 'api/start',
-    component: StartComponent
-  }
+      {
+        path: 'api/start',
+        component: StartComponent
+       },
+      {
+        path: 'listCategory',
+        component: ListCategoryComponent
+      },
+  {path: 'api/start/createCategory',
+  component: CreateCategoryComponent}
 ];
 
 @NgModule({

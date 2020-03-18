@@ -1,1 +1,31 @@
-<p>create-category works!</p>
+<div class="bg_base_lr">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3" style="amax-width:350px;"></div>
+      <div class="col-sm-6" style="">
+        <form name="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            Họ và Tên
+            <input type="text" class="form-control" formControlName="categoryName" placeholder="Category"/>
+            <div class="alert alert-danger" role="alert"
+                 *ngIf="form.get('categoryName').invalid && form.get('categoryName').touched">
+              Category ít nhất gồm 2 kí tự trở lên
+            </div>
+          </div>
+
+          <div class="alert alert-success" role="alert" *ngIf="isSuccess==='true'">
+            Khởi tạo thành công
+          </div>
+          <div class="alert alert-danger" role="alert" *ngIf="isSuccess==='false'">
+            Category này đã tồn tại !!!
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary" type="submit">Create Category</button>
+          </div>
+        </form>
+      </div>
+      <div class="col-sm-3" style="max-width:350px;"></div>
+    </div>
+  </div>
+</div>
+

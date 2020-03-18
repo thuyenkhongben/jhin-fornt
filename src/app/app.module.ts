@@ -10,7 +10,6 @@ import { FooterComponent } from './component/home/footer/footer.component';
 import { RegisterComponent } from './component/user/register/register.component';
 import { LoginComponent } from './component/user/login/login.component';
 import { HomeUserComponent } from './component/user/home-user/home-user.component';
-import { UpdatePasswordUserComponent } from './component/user/update-password-user/update-password-user.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
@@ -36,7 +35,6 @@ import { StartComponent } from './start/start.component';
     RegisterComponent,
     LoginComponent,
     HomeUserComponent,
-    UpdatePasswordUserComponent,
     HomeComponent,
     ListProductComponent,
     CreateProductComponent,
