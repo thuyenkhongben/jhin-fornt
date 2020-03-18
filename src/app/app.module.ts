@@ -24,6 +24,9 @@ import { CreateCategoryComponent } from './component/category/create-category/cr
 import { ManagementListProductComponent } from './component/admin/management-list-product/management-list-product.component';
 import { ManagementListOderComponent } from './component/admin/management-list-oder/management-list-oder.component';
 import { ProductManagementComponent } from './component/admin/product-management/product-management.component';
+import {environment} from '../environments/environment';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
 
 
 
@@ -55,6 +58,8 @@ import { ProductManagementComponent } from './component/admin/product-management
     HttpClientModule,
     RouterModule,
     FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
