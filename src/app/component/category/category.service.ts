@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Category} from '../component/category/category';
+import {Category} from './category';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
@@ -26,7 +26,7 @@ export class CategoryService {
     return this.http.put(`${this.CATEGORY_URL}/${category.categoryId}` , category);
   }
   deleteCategory(id: number): Observable<Category> {
-    return this.http.delete<Category>(`${this.CATEGORY_URL}/${id}`);
+    return this.http.delete< Category >(`${this.CATEGORY_URL}/${id}`);
   }
   getCategoryId(id: number): Observable<Category> {
     return this.http.get<Category>(`${this.CATEGORY_URL}/${id}`);

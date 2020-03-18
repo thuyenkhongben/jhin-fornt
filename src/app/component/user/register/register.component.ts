@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from '../../../interface/user';
-import {Login} from '../../../interface/login';
+import {User} from '../../../auth/interface/user';
+import {Login} from '../../../auth/interface/login';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {UserService} from '../../../service/user.service';
+import {UserService} from '../../../auth/user.service';
 import {Router} from '@angular/router';
 import {CookieService} from 'ngx-cookie-service';
 import {AuthService} from '../../../auth/auth.service';
 import {SignUpInfor} from '../../../auth/SignUpInfor';
-import {SignUpForm} from '../../../interface/signup-form';
+import {SignUpForm} from '../../../auth/interface/signup-form';
 import {THIS_EXPR} from '@angular/compiler/src/output/output_ast';
 
 @Component({

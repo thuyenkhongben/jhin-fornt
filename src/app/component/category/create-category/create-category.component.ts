@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CategoryService} from '../../../service/category.service';
+import {CategoryService} from '../category.service';
 import {Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Category} from '../category';
@@ -28,7 +28,7 @@ export class CreateCategoryComponent implements OnInit {
     this.categoryService.createCategory(this.categoryForm).subscribe(
       data => {
         this.isSuccess = true;
-        this.router.navigate(['listCategory']);
+        this.router.navigate(['api/listCategory']);
         console.log('successfully');
       }, error => {
         console.log('initialization ');

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from '../../../service/user.service';
+import {UserService} from '../../../auth/user.service';
 import {CookieService} from 'ngx-cookie-service';
 import {Router} from '@angular/router';
 import {TokenStogeService} from '../../../auth/token-stoge.service';
@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
 
   private info: any;
 
-  constructor(private token: TokenStogeService, private router: Router) { }
+  constructor(private token: TokenStogeService, private router: Router , private authService: AuthService) { }
 
 
   ngOnInit() {

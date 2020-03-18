@@ -17,21 +17,9 @@
       <li class="nav-item">
         <a class="nav-link" href="https://vnexpress.net/giai-tri/thoi-trang">New Product</a>
       </li>
-        <li class="nav-item" *ngIf="authority === ''">
-      <a class="nav-link" href="https://vnexpress.net/giai-tri/thoi-trang">List Category</a>
+        <li class="nav-item" >
+      <a class="nav-link" href="https://vnexpress.net/giai-tri/thoi-trang">Category</a>
         </li>
-      <li class="nav-item" *ngIf="authority === 'user'">
-        <a class="nav-link" href="https://vnexpress.net/giai-tri/thoi-trang">Category</a>
-      </li>
-      <li class="nav-item dropdown "*ngIf="authority === 'host'">
-        <a class="nav-link dropdown-toggle" href="#" id="navbar-DropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Category
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbar-DropdownMenuLink">
-          <a class="dropdown-item" routerLink="listCategory">List Category</a>
-          <a class="dropdown-item" routerLink="api/start/createCategory">Create Category</a>
-        </div>
-      </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Login/Register
@@ -39,12 +27,6 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" >
           <a class="dropdown-item" routerLink="api/login">Login</a>
           <a class="dropdown-item" routerLink="api/register">Register</a>
-        </div>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" *ngIf="authority === 'USER'">
-          <a class="dropdown-item" routerLink="api/login">Login</a>
-        </div>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" *ngIf="authority === 'ADMIN'">
-          <a class="dropdown-item" routerLink="api/login">register</a>
         </div>
       </li>
     </ul>

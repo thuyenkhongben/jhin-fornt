@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StartComponent } from './start.component';
+import { ManagementListOderComponent } from './management-list-oder.component';
 
-describe('StartComponent', () => {
-  let component: StartComponent;
-  let fixture: ComponentFixture<StartComponent>;
+describe('ManagementListOderComponent', () => {
+  let component: ManagementListOderComponent;
+  let fixture: ComponentFixture<ManagementListOderComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StartComponent ]
+      declarations: [ ManagementListOderComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StartComponent);
+    fixture = TestBed.createComponent(ManagementListOderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

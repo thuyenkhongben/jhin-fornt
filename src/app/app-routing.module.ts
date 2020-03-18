@@ -5,9 +5,11 @@ import {LoginComponent} from './component/user/login/login.component';
 import {RegisterComponent} from './component/user/register/register.component';
 import {ListProductComponent} from './component/product/list-product/list-product.component';
 import {HomeComponent} from './component/home/home.component';
-import {StartComponent} from './start/start.component';
+
 import {ListCategoryComponent} from './component/category/list-category/list-category.component';
 import {CreateCategoryComponent} from './component/category/create-category/create-category.component';
+import {ProductManagementComponent} from './component/admin/product-management/product-management.component';
+import {CreateProductComponent} from './component/product/create-product/create-product.component';
 
 
 const routes: Routes = [
@@ -27,16 +29,21 @@ const routes: Routes = [
         path: 'api/listProduct',
         component: ListProductComponent
       },
+      {path: 'api/listCategory' , component: ListCategoryComponent},
       {
-        path: 'api/start',
-        component: StartComponent
+        path: 'api/listManagement',
+        component: ProductManagementComponent,
+        children: [
+          {path: 'createCategory' , component: CreateCategoryComponent},
+          {path: 'listCategory' , component: ListCategoryComponent},
+          {path: 'createProduct' , component: CreateProductComponent},
+          {path: 'listProduct' , component: ListProductComponent}
+        ]
        },
       {
-        path: 'listCategory',
+        path: 'api/listCategory',
         component: ListCategoryComponent
       },
-  {path: 'api/start/createCategory',
-  component: CreateCategoryComponent}
 ];
 
 @NgModule({

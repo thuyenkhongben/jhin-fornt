@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {UserService} from '../../../service/user.service';
+import {UserService} from '../../../auth/user.service';
 import {CookieService} from 'ngx-cookie-service';
 import {Router} from '@angular/router';
 import {AuthService} from '../../../auth/auth.service';
@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit {
         // console.log(this.roles);
         for (const count of this.roles) {
           if (count === 'ADMIN') {
-            this.router.navigate(['api/start']);
+            this.router.navigate(['api/listManagement']);
           } else  if (count === 'USER') {
             this.router.navigate(['api/listProduct']);
           }

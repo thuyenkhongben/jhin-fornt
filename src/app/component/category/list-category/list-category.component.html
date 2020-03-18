@@ -1,7 +1,30 @@
-<!--<div class="col-md-2" id="sidebar">-->
-<!--  <div>Danh sách sản phẩm</div>-->
-<!--  <hr>-->
-<!--  <br>-->
-<!--  <div class="row" *ngFor="let category of listCategory"><a (click)="searchByCategory(category.id)" id="text">{{category.name}}</a></div>-->
-<!--</div>-->
-<!--<router-outlet></router-outlet>-->
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  </div>
+  <div *ngIf="isDeleteSuccess" class="alert alert-success" role = "alert">
+    You Have Successfully Deleted
+  </div>
+  <div class="panel-body">
+    <table class="table table-bordered table-hover" [style.margin-top.px]="15">
+      <thead>
+      <tr>
+        <th>STT</th>
+        <th>Kind Of Question</th>
+        <th>Delete</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of category ; let categoryId = index">
+        <td>{{categoryId+1}}</td>
+        <td>{{item.categoryName}}</td>
+        <td *ngIf="">
+          <button type = "button" class="btn btn-primary" (click)="onDeleteCategory(item.categoryId)">xóa</button>
+
+        </td>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+

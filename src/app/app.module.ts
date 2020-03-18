@@ -21,9 +21,9 @@ import { EditProductComponent } from './component/product/edit-product/edit-prod
 import { DeleteProductComponent } from './component/product/delete-product/delete-product.component';
 import { ListCategoryComponent } from './component/category/list-category/list-category.component';
 import { CreateCategoryComponent } from './component/category/create-category/create-category.component';
-import { UpdateCategoryComponent } from './component/category/update-category/update-category.component';
-import { DeleteCategoryComponent } from './component/category/delete-category/delete-category.component';
-import { StartComponent } from './start/start.component';
+import { ManagementListProductComponent } from './component/admin/management-list-product/management-list-product.component';
+import { ManagementListOderComponent } from './component/admin/management-list-oder/management-list-oder.component';
+import { ProductManagementComponent } from './component/admin/product-management/product-management.component';
 
 
 
@@ -43,9 +43,9 @@ import { StartComponent } from './start/start.component';
     DeleteProductComponent,
     ListCategoryComponent,
     CreateCategoryComponent,
-    UpdateCategoryComponent,
-    DeleteCategoryComponent,
-    StartComponent,
+    ManagementListProductComponent,
+    ManagementListOderComponent,
+    ProductManagementComponent,
 
   ],
   imports: [

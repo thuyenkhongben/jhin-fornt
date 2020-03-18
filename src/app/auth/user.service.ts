@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import {UserOnline} from '../interface/user-online';
+import {UserOnline} from './interface/user-online';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {CookieService} from 'ngx-cookie-service';
 import {Route, Router} from '@angular/router';
-import {User} from '../interface/user';
+import {User} from './interface/user';
 import {Observable} from 'rxjs';
-import {Login} from '../interface/login';
+import {Login} from './interface/login';
 
 
 @Injectable({
