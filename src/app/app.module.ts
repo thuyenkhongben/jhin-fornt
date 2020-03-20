@@ -49,7 +49,6 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
     ManagementListProductComponent,
     ManagementListOderComponent,
     ProductManagementComponent,
-
   ],
   imports: [
     BrowserModule,

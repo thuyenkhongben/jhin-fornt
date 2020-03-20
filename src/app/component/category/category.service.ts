@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Category} from './category';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-
+import {TokenStogeService} from '../../auth/token-stoge.service';
+const TOKEN_KEY = 'AuthToken';
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryService {
   private CATEGORY_URL = 'http://localhost:5000/api/auth/category';
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient , private token: TokenStogeService) { }
 
   createCategory( category: Category): Observable<Category> {
     return  this.http.post<Category>(this.CATEGORY_URL + '/create', category);

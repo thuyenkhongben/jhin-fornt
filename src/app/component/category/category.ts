@@ -1,7 +1,8 @@
-export  class Category {
+export interface Category {
   categoryId?: number;
   categoryName?: string;
-  constructor(categoryName: string) {
-    this.categoryName = categoryName;
-  }
+  // constructor(categoryName: string) {
+  //   this.categoryName = categoryName;
+  // }
+
 }
