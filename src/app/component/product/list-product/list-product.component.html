@@ -5,25 +5,24 @@
       <div>List Category</div>
       <hr>
       <br>
-      <div class="row" *ngFor="let category of listCategory"><a (click)="searchByCategory(category.id)" id="text">{{category.name}}</a></div>
+      <div class="row" *ngFor="let category of listCategory"><a (click)="searchCategory(category.categoryId)" id="text">{{category.categoryName}}</a></div>
     </div>
     <div class="col-md-10">
-      <div>Tất cả sản phẩm</div>
+      <div>List Product</div>
       <hr>
       <br>
       <div class="container">
-        <div class="alert alert-danger" role="alert" id="shop_cart">
-          <div><a routerLink="shopCart">
-            <img src="../../assets/image/shopping_cart_icon.png">
-          </a><u *ngIf="check">({{billService.index}})</u></div>
-        </div>
+  <!--        <div class="alert alert-danger" role="alert" id="shop_cart">-->
+  <!--          <div><a routerLink="shopCart">-->
+  <!--            <img src="../../assets/image/shopping_cart_icon.png">-->
+  <!--          </a><u *ngIf="check">({{billService.index}})</u></div>-->
+  <!--        </div>-->
         <div class="row">
-          <div class="col-md-3 col-sm-6" *ngFor="let product of products">
+          <div class="col-md-3 col-sm-6" *ngFor="let product of listProduct">
             <div class="product-grid4">
               <div class="product-image4">
-                <a [routerLink]="['detailProduct',product.id]">
-                  <img class="pic-1" [src]="product.picture[0].name">
-                  <img class="pic-2" [src]="product.picture[1].name">
+                <a [routerLink]="['detailProduct',product.productId]">
+                  <img class="pic-1" [src]="product.pictures">
                 </a>
                 <ul class="social">
                   <li>
@@ -33,11 +32,11 @@
                 </ul>
               </div>
               <div class="product-content">
-                <h3 class="title">{{product.name}}</h3>
+                <h3 class="title">{{product.nameProduct}}</h3>
                 <div class="price">
-                  {{product.price}}/Kg
+                  {{product.priceProduct}}  USD/Product
                 </div>
-                <a class="add-to-cart" [routerLink]="['pay', product.id]">Mua ngay!</a>
+                <a class="add-to-cart" [routerLink]="['pay', product.productId]">Mua ngay!</a>
               </div>
             </div>
           </div>

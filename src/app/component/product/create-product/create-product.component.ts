@@ -33,42 +33,26 @@ export class CreateProductComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.productService.listCategory().subscribe(next => {
-      console.log(next);
-      this.listCategory = next;
+    this.formListCategory();
+    this.formProduct();
+  }
+
+  formListCategory() {
+    this.productService.listCategory().subscribe(data => {
+      this.listCategory = data;
     }, error => {
       console.log(error);
     });
+  }
+  formProduct() {
     this.createProductForm = this.fb.group({
       nameProduct: ['', [Validators.required]],
-      amount: ['', [Validators.required]],
+      amount: ['', [Validators.required, Validators.min(1)]],
       descriptionProduct: ['', [Validators.required]],
-      priceProduct: ['', [Validators.required]],
+      priceProduct: ['', [Validators.required, Validators.min(1)]],
       categoryName: ['', [Validators.required]],
     });
   }
-
-  // formListCategory() {
-  //   this.productService.listCategory().subscribe(data => {
-  //     this.listCategory = data;
-  //   }, error => {
-  //     console.log(error);
-  //   });
-  // }
-  // formProduct() {
-  //   this.form = this.fb.group({
-  //     nameProduct: ['', [Validators.required]],
-  //     amount: ['', [Validators.required, Validators.min(1)]],
-  //     descriptionProduct: ['', [Validators.required]],
-  //     priceProduct: ['', [Validators.required, Validators.min(1)]],
-  //     category: ['', [Validators.required]],
-  //     // nameProduct: new FormControl('', Validators.required),
-  //     // amount: new FormControl(this.category),
-  //     // descriptionProduct: new FormControl(''),
-  //     // priceProduct: new FormControl('', Validators.required),
-  //     // category: new FormControl('', Validators.required),
-  //   });
-  // }
 
   formConvert() {
     console.log(this.createProductForm);
@@ -113,7 +97,7 @@ export class CreateProductComponent implements OnInit {
       },
       () => {
         uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
-          this.picture = {pictureName: downloadURL};
+          this.picture = {namePicture: downloadURL};
           console.log(downloadURL);
           this.arrayPicture.push(this.picture);
         });
