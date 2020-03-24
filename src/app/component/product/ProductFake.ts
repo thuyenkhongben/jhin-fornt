@@ -1,9 +1,9 @@
 import {Picture} from './interface/Picture';
 import {Category} from '../category/category';
 
-export interface Product {
+export interface ProductFake {
   data?: any;
-  productId?: string;
+  productId: string;
   nameProduct: string;
   priceProduct: number;
   amount: number;

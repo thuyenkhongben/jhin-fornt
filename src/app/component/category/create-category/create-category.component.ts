@@ -29,7 +29,7 @@ export class CreateCategoryComponent implements OnInit {
     this.categoryService.createCategory(this.categoryForm).subscribe(
       data => {
         this.isSuccess = true;
-        this.router.navigate(['api/listCategory']);
+        this.router.navigate(['api/listManagement']);
         console.log('successfully');
       }, error => {
         console.log('initialization ');

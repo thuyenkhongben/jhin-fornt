@@ -4,5 +4,4 @@ export class Category {
   constructor(categoryName: string) {
     this.categoryName = categoryName;
   }
-
 }

@@ -22,7 +22,7 @@
             <div class="product-grid4">
               <div class="product-image4">
                 <a [routerLink]="['detailProduct',product.productId]">
-                  <img class="pic-1" [src]="product.pictures">
+                  <img class="pic-1" *ngFor="let picture of listPictures" [src]="picture.namePicture">
                 </a>
                 <ul class="social">
                   <li>
