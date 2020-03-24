@@ -18,11 +18,11 @@
   <!--          </a><u *ngIf="check">({{billService.index}})</u></div>-->
   <!--        </div>-->
         <div class="row">
-          <div class="col-md-3 col-sm-6" *ngFor="let product of listProduct">
-            <div class="product-grid4">
-              <div class="product-image4">
-                <a [routerLink]="['detailProduct',product.productId]">
-                  <img class="pic-1" *ngFor="let picture of listPictures" [src]="picture.namePicture">
+          <div class="col-md-3 col-sm-6"  *ngFor="let product of listProduct">
+            <div class="product-grid4 ">
+              <div class="product-image4" *ngFor="let picture of listPictures" >
+                <a [routerLink]="['detailsProduct',product.productId]" >
+                  <img class="pic-1"  [src]="picture.namePicture" *ngIf="picture.product.productId === product.productId" >
                 </a>
                 <ul class="social">
                   <li>

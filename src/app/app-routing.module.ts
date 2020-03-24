@@ -39,7 +39,7 @@ const routes: Routes = [
           {path: 'listCategory' , component: ListCategoryComponent},
           {path: 'createProduct' , component: CreateProductComponent},
           {path: 'listProduct' , component: ListProductComponent},
-          {path: 'detailsProduct' , component: EditProductComponent}
+          {path: 'detailsProduct/:id' , component: EditProductComponent}
         ]
        },
       {

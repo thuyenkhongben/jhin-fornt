@@ -10,7 +10,6 @@ import {Category} from '../../category/category';
 import {messaging} from 'firebase';
 import {Product} from '../Product';
 import {PictureService} from '../picture.service';
-import {ProductFake} from '../ProductFake';
 
 
 @Component({
@@ -27,7 +26,6 @@ export class CreateProductComponent implements OnInit {
   arrayPicture = [];
   createProductForm: FormGroup;
   category: Category;
-  productFake: ProductFake;
 
   constructor(private router: Router,
               private db: AngularFireDatabase,
