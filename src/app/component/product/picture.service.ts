@@ -17,4 +17,7 @@ export class PictureService {
   listPicture(): Observable<Picture[]> {
     return this.http.get<Picture[]>(this.PIC + '/list');
   }
+  updatePicture( picture: Picture): Observable<Picture> {
+    return this.http.put<Picture>(`${this.PIC}/${'update'}/${picture.id}` , picture);
+  }
 }

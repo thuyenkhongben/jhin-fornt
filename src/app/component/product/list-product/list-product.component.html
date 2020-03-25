@@ -12,23 +12,12 @@
       <hr>
       <br>
       <div class="container">
-  <!--        <div class="alert alert-danger" role="alert" id="shop_cart">-->
-  <!--          <div><a routerLink="shopCart">-->
-  <!--            <img src="../../assets/image/shopping_cart_icon.png">-->
-  <!--          </a><u *ngIf="check">({{billService.index}})</u></div>-->
-  <!--        </div>-->
         <div class="row">
           <div class="col-md-3 col-sm-6"  *ngFor="let product of listProduct">
             <div class="product-grid4 ">
               <div class="product-image4" *ngFor="let picture of listPictures" >
-                <a [routerLink]="['detailsProduct',product.productId]" >
                   <img class="pic-1"  [src]="picture.namePicture" *ngIf="picture.product.productId === product.productId" >
-                </a>
                 <ul class="social">
-                  <li>
-                    <button (click)="saveCart(product)" data-tip="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i>
-                    </button>
-                  </li>
                 </ul>
               </div>
               <div class="product-content">
@@ -36,7 +25,11 @@
                 <div class="price">
                   {{product.priceProduct}}  USD/Product
                 </div>
+                <div class="description">
+                  {{product.descriptionProduct}}
+                </div>
                 <a class="add-to-cart" [routerLink]="['pay', product.productId]">Mua ngay!</a>
+                <a class="updateProduct" [routerLink]="['updateProduct', product.productId]" *ngIf="authority === 'host'">update</a>
               </div>
             </div>
           </div>

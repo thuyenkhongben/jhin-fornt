@@ -27,7 +27,7 @@ import { ProductManagementComponent } from './component/admin/product-management
 import {environment} from '../environments/environment';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
-import { PictureComponent } from './component/product/picture/picture.component';
+
 
 
 
@@ -50,7 +50,6 @@ import { PictureComponent } from './component/product/picture/picture.component'
     ManagementListProductComponent,
     ManagementListOderComponent,
     ProductManagementComponent,
-    PictureComponent,
   ],
   imports: [
     BrowserModule,

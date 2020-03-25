@@ -38,19 +38,6 @@ export class CreateProductComponent implements OnInit {
   ngOnInit() {
     this.formListCategory();
     this.formProduct();
-    // this.productService.listCategory().subscribe(data => {
-    //   this.listCategory = data;
-    // }, error => {
-    //   console.log(error);
-    // });
-    // this.createProductForm = this.fb.group({
-    //   pictures: ['', [Validators.required]],
-    //   nameProduct: ['', [Validators.required]],
-    //   amount: ['', [Validators.required, Validators.min(1)]],
-    //   descriptionProduct: ['', [Validators.required]],
-    //   priceProduct: ['', [Validators.required, Validators.min(1)]],
-    //   categoryName: ['', [Validators.required]]
-    // });
   }
 
   formListCategory() {

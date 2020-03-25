@@ -1,1 +1,63 @@
-<p>update-product works!</p>
+<div class="create-product" id="form-logen">
+  <form [formGroup]="createProductForm" (ngSubmit)="updateProduct()">
+    <div class="form-group">
+       Update Category
+      <select formControlName="categoryName" class="form-control">
+        <option *ngFor=" let category of listCategory" [value]="category.categoryId">{{category.categoryName}}</option>
+      </select>
+      <div class="alert alert-danger" role="alert"
+           *ngIf="createProductForm.get('categoryName').invalid && createProductForm.get('categoryName').touched">
+        Need to choose a product type
+      </div>
+    </div>
+    <div class="form-group">
+       Update Name Product
+      <input type="text" class="form-control" formControlName="nameProduct" placeholder="Tên sản phẩm"/>
+      <div class="alert alert-danger" role="alert"
+           *ngIf="createProductForm.get('nameProduct').invalid && createProductForm.get('nameProduct').touched">
+        Chưa Điền Tên Sản Phẩm
+      </div>
+    </div>
+    <div class="form-group">
+       Update Price Product
+      <input type="number" class="form-control" formControlName="priceProduct" placeholder="Price Product"/>
+      <div class="alert alert-danger"
+           *ngIf="createProductForm.get('priceProduct').invalid && createProductForm.get('priceProduct').touched">
+        Must not be blank and must be larger 1
+      </div>
+    </div>
+    <div class="form-group">
+     Update Amount
+      <input type="number" class="form-control" formControlName="amount" placeholder="Amount"/>
+      <div class="alert alert-danger" role="alert"
+           *ngIf="createProductForm.get('amount').invalid && createProductForm.get('amount').touched">
+        The number must be more than 1
+      </div>
+    </div>
+
+    <div class="form-group">
+      Update Description Product
+      <input type="text" class="form-control" formControlName="descriptionProduct" placeholder="Description Product"/>
+      <div class="alert alert-danger" role="alert"
+           *ngIf="createProductForm.get('descriptionProduct').invalid && createProductForm.get('descriptionProduct').touched">
+        Must not be blank
+      </div>
+    </div>
+
+    <div class="form-group">
+     Update Picture Product
+      <input type="file"  multiple="multiple" (change)="uploadFile($event)" required/>
+    </div>
+
+
+    <div class="alert alert-danger" role="alert" *ngIf="isSuccess === false ">
+      Product repair failed
+    </div>
+    <div class="form-group">
+      <div>
+      </div>
+      <button class="btn btn-primary" type="submit">Update Product</button>
+    </div>
+  </form>
+</div>
+

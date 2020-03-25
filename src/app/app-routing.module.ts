@@ -11,6 +11,7 @@ import {CreateCategoryComponent} from './component/category/create-category/crea
 import {ProductManagementComponent} from './component/admin/product-management/product-management.component';
 import {CreateProductComponent} from './component/product/create-product/create-product.component';
 import {EditProductComponent} from './component/product/edit-product/edit-product.component';
+import {UpdateProductComponent} from './component/product/update-product/update-product.component';
 
 
 const routes: Routes = [
@@ -39,7 +40,8 @@ const routes: Routes = [
           {path: 'listCategory' , component: ListCategoryComponent},
           {path: 'createProduct' , component: CreateProductComponent},
           {path: 'listProduct' , component: ListProductComponent},
-          {path: 'detailsProduct/:id' , component: EditProductComponent}
+          {path: 'detailsProduct/:id' , component: EditProductComponent},
+          {path: 'updateProduct/:id' , component: UpdateProductComponent}
         ]
        },
       {

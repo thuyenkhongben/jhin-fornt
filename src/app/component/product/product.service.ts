@@ -24,4 +24,11 @@ export class ProductService {
   listCategory(): Observable<Category[]> {
     return this.http.get<Category[]>(this.CATEGORY_URL + '/list');
   }
-}
+
+  detailsProduct(id): Observable<Product> {
+    return this.http.get<Product>(`${this.API_URL}/${id}` );
+  }
+  updateP(id , product): Observable<Product> {
+    return this.http.put<Product>( `${this.API_URL}/${'update'}/${id}` , product);
+  }
+ }

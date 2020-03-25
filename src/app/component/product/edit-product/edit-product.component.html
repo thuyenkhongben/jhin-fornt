@@ -1,1 +1,26 @@
-<p>edit-product works!</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 col-lg-12 col-md-12 sol-sm-12">
+      <table class="table table-striped">
+        <tr>
+          <td>Name</td>
+          <td>{{product.nameProduct}}</td>
+        </tr>
+        <tr>
+          <td>Description</td>
+          <td>{{product.descriptionProduct}}</td>
+        </tr>
+        <tr>
+          <td>Price</td>
+          <td>{{product.priceProduct}}</td>
+        </tr>
+        <tr>
+          <td>amount</td>
+          <td>{{product.amount}}</td>
+        </tr>
+      </table>
+      <br>
+      <button class="btn btn-warning" (click)="backToList()">Go Back</button>
+    </div>
+  </div>
+</div>
