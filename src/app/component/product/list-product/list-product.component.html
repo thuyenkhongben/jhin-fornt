@@ -28,8 +28,17 @@
                 <div class="description">
                   {{product.descriptionProduct}}
                 </div>
-                <a class="add-to-cart" [routerLink]="['pay', product.productId]">Mua ngay!</a>
-                <a class="updateProduct" [routerLink]="['updateProduct', product.productId]" *ngIf="authority === 'host'">update</a>
+                <div class="shoping">
+                  <a class="add-to-cart" [routerLink]="['pay', product.productId]">Mua ngay!</a>
+                </div>
+                <div class="description1">
+                  <a class="updateProduct" [routerLink]="['updateProduct', product.productId]" *ngIf="authority === 'host'">update</a>
+                </div>
+                <div class="deleteProduct">
+                  <button type="button"  class="delete-product" (click)="deleteProduct(product.productId)" *ngIf="authority === 'host'">Delete Product</button>
+                </div>
+
+
               </div>
             </div>
           </div>

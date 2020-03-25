@@ -7,6 +7,7 @@ import {Product} from '../Product';
 import {PictureService} from '../picture.service';
 import {Picture} from '../interface/Picture';
 import {TokenStogeService} from '../../../auth/token-stoge.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-list-product',
@@ -16,7 +17,7 @@ import {TokenStogeService} from '../../../auth/token-stoge.service';
 export class ListProductComponent implements OnInit {
   private roles: string[];
   private authority: string;
-  private info: any;
+  private info: Subscription;
   listProduct: Product[];
   product: Product;
   listCategory: Category[];
@@ -66,4 +67,10 @@ export class ListProductComponent implements OnInit {
       }
     }
   }
+  deleteProduct(id: number) {
+  this.info = this.productService.deleteP(id).subscribe( (data: Product) => {
+  });
+  this.allProduct();
+  }
+
 }
